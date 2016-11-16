@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.oscar.cookbook.CookbookActivity">
+    tools:context="com.example.oscar.cookbook.Activities.CookbookActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,38 +28,44 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox6"
+                android:id="@+id/Potato"
                 android:text="@string/Potato" />
 
             <CheckBox
                 android:text="@string/Rice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox5" />
+                android:id="@+id/Rice" />
 
             <CheckBox
                 android:text="@string/Tomato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox4" />
+                android:id="@+id/Tomato" />
 
             <CheckBox
                 android:text="@string/Oil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox3" />
+                android:id="@+id/Oil" />
+
+            <CheckBox
+                android:text="@string/Onion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Onion" />
 
             <CheckBox
                 android:text="@string/Milk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox2" />
+                android:id="@+id/Milk" />
 
             <CheckBox
                 android:text="@string/Bean"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox" />
+                android:id="@+id/Bean" />
 
 
 

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Cookbook</string>
+    <string name="Potato">Patata</string>
+    <string name="Tomato">Tomate</string>
+    <string name="Rice">Arroz</string>
+    <string name="Onion">Cebolla</string>
+    <string name="Milk">Leche</string>
+    <string name="Oil">Aceite</string>
+    <string name="Bean">Judias</string>
+
+    <string name="FindButton">Cercar</string>
+
+</resources>

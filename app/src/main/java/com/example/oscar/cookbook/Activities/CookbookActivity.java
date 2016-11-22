@@ -22,7 +22,8 @@ public class CookbookActivity extends AppCompatActivity
     CheckBox oilCheckbox;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cookbook);
 
@@ -40,9 +41,33 @@ public class CookbookActivity extends AppCompatActivity
     {
         List<String> ingredients = new ArrayList<>();
         if(tomatoCheckbox.isChecked())
-        {
+            ingredients.add(getResources().getString(R.string.Tomato));
+        if(potatoCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Potato));
 
-        }
+
+
+
+
+
+
+
+        // TODO create Intent passing arguments
+
+        Intent intent = new Intent(this, RecipeActivity.class);
+
+        intent.putExtra("Number", ingredients.size());
+        intent.putExtra("Ingredient_1", ingredients.get(0));
+        intent.putExtra("Ingredient_2", ingredients.get(1));
+        //...
+
+        ingredients.add("patata");
+
+        startActivity(intent);
+
+
+
+
 
 
     }

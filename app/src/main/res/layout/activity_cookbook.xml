@@ -44,10 +44,10 @@
                 android:id="@+id/Tomato" />
 
             <CheckBox
-                android:text="@string/Oil"
+                android:text="@string/Egg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/Oil" />
+                android:id="@+id/Egg" />
 
             <CheckBox
                 android:text="@string/Onion"

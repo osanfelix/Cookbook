@@ -19,7 +19,7 @@ public class CookbookActivity extends AppCompatActivity
     CheckBox onionCheckbox;
     CheckBox milkCheckbox;
     CheckBox beanCheckbox;
-    CheckBox oilCheckbox;
+    CheckBox eggCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +34,7 @@ public class CookbookActivity extends AppCompatActivity
         onionCheckbox = (CheckBox)findViewById(R.id.Onion);
         milkCheckbox = (CheckBox)findViewById(R.id.Milk);
         beanCheckbox = (CheckBox)findViewById(R.id.Bean);
-        oilCheckbox = (CheckBox)findViewById(R.id.Oil);
+        eggCheckbox = (CheckBox)findViewById(R.id.Egg);
     }
 
     public void onClick(View view)
@@ -44,31 +44,25 @@ public class CookbookActivity extends AppCompatActivity
             ingredients.add(getResources().getString(R.string.Tomato));
         if(potatoCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Potato));
+        if(riceCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Rice));
+        if(onionCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Onion));
+        if(milkCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Milk));
+        if(beanCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Bean));
+        if(eggCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Egg));
 
 
-
-
-
-
-
-
-        // TODO create Intent passing arguments
-
+        // Create the Intent passing arguments
         Intent intent = new Intent(this, RecipeActivity.class);
 
         intent.putExtra("Number", ingredients.size());
-        intent.putExtra("Ingredient_1", ingredients.get(0));
-        intent.putExtra("Ingredient_2", ingredients.get(1));
-        //...
-
-        ingredients.add("patata");
+        for(int i = 0; i <ingredients.size(); i++)
+            intent.putExtra("Ingredient_" + i, ingredients.get(i));
 
         startActivity(intent);
-
-
-
-
-
-
     }
 }

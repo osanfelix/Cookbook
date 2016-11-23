@@ -20,18 +20,14 @@ public class RecipeBook
 
     }
 
-    public static List<Recipe> getRecipes(List<String> ingredients)
+    public static List<Recipe> getRecipes(String[] ingredients)
     {
         List<Recipe> out = new ArrayList<>();
         for(Recipe recipe : _recipes)
         {
-            for(String ingredient : recipe.getIngredients())
-            {
-                if(recipe.hasIngredient(ingredient))
-                    out.add(recipe);
-            }
+            if(recipe.checkIngredients(ingredients))
+                out.add(recipe);
         }
-
         return out;
     }
 }

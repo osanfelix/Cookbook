@@ -8,19 +8,14 @@ import java.util.List;
 
 public class Recipe
 {
-    String _title;
-    List<String> _ingredients = new ArrayList<>();
-    String _url;
+    private String _title;
+    private List<String> _ingredients = new ArrayList<>();
+    private String _url;
 
     public Recipe(String title, String url, String[] ingredients) {
         _title = title;
         _ingredients = Arrays.asList(ingredients);
         _url = url;
-    }
-
-    public String[] getIngredients()
-    {
-        return _ingredients.toArray(new String[_ingredients.size()]);
     }
 
     public boolean hasIngredient(String ingredient)
@@ -32,5 +27,32 @@ public class Recipe
         }
 
         return true;
+    }
+
+    // If all the _ingredients are in ingredients => returns 'true'
+    public boolean checkIngredients(String[] ingredients)
+    {
+        List<String> ingredientsList = Arrays.asList(ingredients);
+
+        for(String myIngredient : _ingredients)
+        {
+            if(!ingredientsList.contains(myIngredient))
+                return false;
+        }
+        return true;
+    }
+
+    public String getTitle() {
+        return _title;
+    }
+
+    public String[] getIngredients()
+    {
+        return _ingredients.toArray(new String[_ingredients.size()]);
+    }
+
+    public String getUrl()
+    {
+        return _url;
     }
 }

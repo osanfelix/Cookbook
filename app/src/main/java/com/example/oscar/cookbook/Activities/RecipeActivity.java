@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.oscar.cookbook.R;
 import com.example.oscar.cookbook.Recipe;
@@ -15,11 +18,16 @@ public class RecipeActivity extends AppCompatActivity
 {
     int number = 0;
     String[] ingredients = null;
-
+    ListView list;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        // Get the list
+        list = (ListView) findViewById(R.id.recipe_list);
 
         // Get bundle and fill data (same intent data)
         if(savedInstanceState != null)
@@ -55,11 +63,20 @@ public class RecipeActivity extends AppCompatActivity
         // Get recipes
         List<Recipe> recipes = RecipeBook.getRecipes(ingredients);
 
+        // Create the adapter
+        ArrayAdapter<String> adapterRecipes = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, new String[]{"Caca", "futi"});
+
+        // Set the adapter
+        list.setAdapter(adapterRecipes);
+
+
+        /*
         for(Recipe recipe : recipes)
         {
             //TODO: Fill screen
         }
-
+        */
     }
 
     @Override

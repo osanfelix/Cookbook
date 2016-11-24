@@ -8,9 +8,8 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.oscar.cookbook.R;
-import com.example.oscar.cookbook.Recipe;
-import com.example.oscar.cookbook.RecipeBook;
+import com.example.oscar.cookbook.Adapters.*;
+import com.example.oscar.cookbook.*;
 
 import java.util.List;
 
@@ -64,19 +63,10 @@ public class RecipeActivity extends AppCompatActivity
         List<Recipe> recipes = RecipeBook.getRecipes(ingredients);
 
         // Create the adapter
-        ArrayAdapter<String> adapterRecipes = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, new String[]{"Caca", "futi"});
+        RecipeAdapter adapterRecipes = new RecipeAdapter(this, recipes.toArray(new Recipe[recipes.size()]));
 
         // Set the adapter
         list.setAdapter(adapterRecipes);
-
-
-        /*
-        for(Recipe recipe : recipes)
-        {
-            //TODO: Fill screen
-        }
-        */
     }
 
     @Override

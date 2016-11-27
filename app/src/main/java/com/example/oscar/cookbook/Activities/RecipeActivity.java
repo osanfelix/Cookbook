@@ -1,23 +1,29 @@
 package com.example.oscar.cookbook.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Adapter;
+
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.oscar.cookbook.Adapters.*;
 import com.example.oscar.cookbook.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RecipeActivity extends AppCompatActivity
 {
     int number = 0;
     String[] ingredients = null;
+
     ListView list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,10 +38,7 @@ public class RecipeActivity extends AppCompatActivity
         if(savedInstanceState != null)
         {
             number = savedInstanceState.getInt("Number",0);
-            ingredients = new String[number];
-
-            for(int i = 0; i < number; i++)
-                ingredients[i] = savedInstanceState.getString("Ingredient_" + i);
+            ingredients = savedInstanceState.getStringArray("Ingredients");
         }
     }
 
@@ -46,6 +49,8 @@ public class RecipeActivity extends AppCompatActivity
         //loadRecipes
         RecipeBook.loadRecipes();
 
+        list.setAdapter(null);
+        list.invalidateViews();
 
         // Analize intent
         Intent ingredientsIntent = getIntent();
@@ -62,16 +67,75 @@ public class RecipeActivity extends AppCompatActivity
         // Get recipes
         List<Recipe> recipes = RecipeBook.getRecipes(ingredients);
 
+
+        // Feed the ListView
+        // String 'Title' adapter
+        String[] title = new String[recipes.size()];
+        String[] ingredients2 = new String[recipes.size()];
+        for(int i = 0; i < recipes.size(); i++) {title[i] = recipes.get(i).getTitle();}
+        for(int i = 0; i < recipes.size(); i++) {
+            ingredients2[i] = Arrays.toString(recipes.get(i).getIngredients());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_2, android.R.id.text1, title);
+
+
+        list.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        // ListView Item Click Listener
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id)
+            {
+                // ListView Clicked item value
+                String title = (String) list.getItemAtPosition(position);
+
+                // Show Alert
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RecipeBook.getRecipeFromTitle(title).getUrl()));
+                startActivity(browserIntent);
+            }
+        });
+
+
+        // AMPLIATION:
+        /*
+
         // Create the adapter
-        RecipeAdapter adapterRecipes = new RecipeAdapter(this, recipes.toArray(new Recipe[recipes.size()]));
+        //RecipeAdapter adapterRecipes = new RecipeAdapter(this, recipes.toArray(new Recipe[recipes.size()]));
 
         // Set the adapter
-        list.setAdapter(adapterRecipes);
+        //list.setAdapter(adapterRecipes);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                    {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id)
+                        {
+                            // ListView Clicked item value
+                            Recipe  recipe = (Recipe) list.getItemAtPosition(position);
+
+                            // Show Alert
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(recipe.getUrl()));
+                            startActivity(browserIntent);
+                        }
+                    });
+         */
     }
 
-    @Override
-    protected  void onPause()
+
+    public void onSaveInstanceState(Bundle outState)
     {
-        // TODO: Save bundle
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("Number", number);
+        for(int i = 0; i < number; i++)
+        {
+            outState.putStringArray("Ingredients", ingredients);
+        }
     }
 }

@@ -7,6 +7,9 @@
     <string name="Milk">Leche</string>
     <string name="Egg">Huevo</string>
     <string name="Bean">Judias</string>
+    <string name="Tune">Atun</string>
+    <string name="Paste">Pasta</string>
+    <string name="Bread">Pan</string>
 
     <string name="FindButton">Cercar</string>
 

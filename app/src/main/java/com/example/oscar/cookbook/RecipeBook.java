@@ -1,5 +1,6 @@
 package com.example.oscar.cookbook;
 
+import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +12,16 @@ public class RecipeBook
     {
 
         _recipes.add(new Recipe("Arroz con leche",
-                "http://google.com",
+                "http://www.recetaarrozconleche.com/",
                 new String[]{"Arroz", "Leche"}));
 
         _recipes.add(new Recipe("Tostada con tomate",
-                "http://google.com/tomate",
+                "https://cookpad.com/es/recetas/132377-tostadas-con-tomate",
                 new String[]{"Pan", "Tomate"}));
 
+        _recipes.add(new Recipe("Pasta, tomate y atun",
+                "http://www.directoalpaladar.com/recetas-de-pasta/pasta-con-atun-y-tomate",
+                new String[]{"Tomate", "Pasta", "Atun"}));
     }
 
     public static List<Recipe> getRecipes(String[] ingredients)
@@ -29,5 +33,17 @@ public class RecipeBook
                 out.add(recipe);
         }
         return out;
+    }
+
+    @Nullable
+    public static Recipe getRecipeFromTitle(String title)
+    {
+        for(Recipe recipe : _recipes)
+        {
+            if(recipe.getTitle().equals(title))
+                return recipe;
+        }
+
+        return null;
     }
 }

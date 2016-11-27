@@ -18,12 +18,13 @@ import com.example.oscar.cookbook.Recipe;
 
 public class RecipeAdapter extends ArrayAdapter<Recipe>
 {
+
     public RecipeAdapter(Context context, Recipe[] objects)
     {
         super(context,0, objects);
     }
 
-    @NonNull
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {

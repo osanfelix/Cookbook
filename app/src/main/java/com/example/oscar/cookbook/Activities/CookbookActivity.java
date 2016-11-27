@@ -20,6 +20,10 @@ public class CookbookActivity extends AppCompatActivity
     CheckBox milkCheckbox;
     CheckBox beanCheckbox;
     CheckBox eggCheckbox;
+    CheckBox tuneCheckbox;
+    CheckBox pasteCheckbox;
+    CheckBox breadCheckbox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,6 +39,9 @@ public class CookbookActivity extends AppCompatActivity
         milkCheckbox = (CheckBox)findViewById(R.id.Milk);
         beanCheckbox = (CheckBox)findViewById(R.id.Bean);
         eggCheckbox = (CheckBox)findViewById(R.id.Egg);
+        tuneCheckbox = (CheckBox)findViewById(R.id.Tune);
+        pasteCheckbox = (CheckBox)findViewById(R.id.Paste);
+        breadCheckbox = (CheckBox)findViewById(R.id.Bread);
     }
 
     public void onClick(View view)
@@ -54,6 +61,14 @@ public class CookbookActivity extends AppCompatActivity
             ingredients.add(getResources().getString(R.string.Bean));
         if(eggCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Egg));
+        if(tuneCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Tune));
+        if(pasteCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Paste));
+        if(breadCheckbox.isChecked())
+            ingredients.add(getResources().getString(R.string.Bread));
+
+
 
 
         // Create the Intent passing arguments

@@ -67,6 +67,24 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Bean" />
 
+            <CheckBox
+                android:text="@string/Tune"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Tune" />
+
+            <CheckBox
+                android:text="@string/Paste"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Paste" />
+
+            <CheckBox
+                android:text="@string/Bread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Bread" />
+
 
 
         </LinearLayout>

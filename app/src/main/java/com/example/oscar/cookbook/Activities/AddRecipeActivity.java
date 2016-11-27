@@ -1,6 +1,7 @@
 package com.example.oscar.cookbook.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,9 @@ import com.example.oscar.cookbook.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.Preferences;
 
-public class CookbookActivity extends AppCompatActivity
+public class AddRecipeActivity extends AppCompatActivity
 {
     CheckBox tomatoCheckbox;
     CheckBox potatoCheckbox;
@@ -29,7 +31,7 @@ public class CookbookActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cookbook);
+        setContentView(R.layout.activity_add_recipe);
 
         // Get checkbox references
         tomatoCheckbox = (CheckBox)findViewById(R.id.Tomato);
@@ -44,47 +46,32 @@ public class CookbookActivity extends AppCompatActivity
         breadCheckbox = (CheckBox)findViewById(R.id.Bread);
     }
 
-    public void onClickCreate(View view)
-    {
-        // Create the Intent passing arguments
-        Intent intent = new Intent(this, AddRecipeActivity.class);
-        startActivity(intent);
-    }
-
-
-    public void onClick(View view)
-    {
-
+    public void onClick(View view) {
         List<String> ingredients = new ArrayList<>();
-        if(tomatoCheckbox.isChecked())
+
+        if (tomatoCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Tomato));
-        if(potatoCheckbox.isChecked())
+        if (potatoCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Potato));
-        if(riceCheckbox.isChecked())
+        if (riceCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Rice));
-        if(onionCheckbox.isChecked())
+        if (onionCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Onion));
-        if(milkCheckbox.isChecked())
+        if (milkCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Milk));
-        if(beanCheckbox.isChecked())
+        if (beanCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Bean));
-        if(eggCheckbox.isChecked())
+        if (eggCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Egg));
-        if(tuneCheckbox.isChecked())
+        if (tuneCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Tune));
-        if(pasteCheckbox.isChecked())
+        if (pasteCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Paste));
-        if(breadCheckbox.isChecked())
+        if (breadCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Bread));
 
 
-        // Create the Intent passing arguments
-        Intent intent = new Intent(this, RecipeActivity.class);
-
-        intent.putExtra("Number", ingredients.size());
-        for(int i = 0; i <ingredients.size(); i++)
-            intent.putExtra("Ingredient_" + i, ingredients.get(i));
-
-        startActivity(intent);
+        // Save the recipe inte Shared Preferences
+        // TODO
     }
 }

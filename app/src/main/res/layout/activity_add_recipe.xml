@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_recipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.oscar.cookbook.Activities.AddRecipeActivity">
+    <TextView
+        android:text="Título:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelTitle"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Escribe el título..."
+        android:ems="10"
+        android:id="@+id/textTitle"
+        android:layout_below="@+id/labelTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Ingredientes:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/labelIngredients"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/labelIngredients"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:id="@+id/scroll_view">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Potato"
+                    android:text="@string/Potato" />
+
+                <CheckBox
+                    android:text="@string/Rice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Rice" />
+
+                <CheckBox
+                    android:text="@string/Tomato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Tomato" />
+
+                <CheckBox
+                    android:text="@string/Egg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Egg" />
+
+                <CheckBox
+                    android:text="@string/Onion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Onion" />
+
+                <CheckBox
+                    android:text="@string/Milk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Milk" />
+
+                <CheckBox
+                    android:text="@string/Bean"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Bean" />
+
+                <CheckBox
+                    android:text="@string/Tune"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Tune" />
+
+                <CheckBox
+                    android:text="@string/Paste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Paste" />
+
+                <CheckBox
+                    android:text="@string/Bread"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Bread" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <TextView
+            android:text="Enlace:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textURL"
+            android:textSize="20sp"
+            android:textStyle="normal|bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="Pon la url de la receta..."
+            android:ems="10"
+            android:id="@+id/editText"/>
+
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -18,6 +18,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:id="@+id/scroll_view">
 
         <LinearLayout
@@ -84,17 +85,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/Bread" />
-
-
-
         </LinearLayout>
     </ScrollView>
-    <Button
-        android:text="@string/FindButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1"
-        android:layout_marginTop="30dp"
-        android:onClick="onClick" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+            <Button
+                android:text="@string/FindButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:id="@+id/button_find"
+                android:onClick="onClick" />
+
+            <Button
+                android:text="@string/CreateButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/button_create"
+                android:textStyle="italic"
+                android:onClick="onClickCreate" />
+
+    </LinearLayout>
 </LinearLayout>
 </RelativeLayout>

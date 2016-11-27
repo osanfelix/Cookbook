@@ -43,7 +43,6 @@ public class RecipeBook
             if(recipe.getTitle().equals(title))
                 return recipe;
         }
-
         return null;
     }
 }

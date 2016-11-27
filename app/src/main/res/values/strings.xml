@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Cookbook</string>
+
     <string name="Potato">Patata</string>
     <string name="Tomato">Tomate</string>
     <string name="Rice">Arroz</string>
@@ -11,6 +12,7 @@
     <string name="Paste">Pasta</string>
     <string name="Bread">Pan</string>
 
-    <string name="FindButton">Cercar</string>
+    <string name="FindButton">Buscar</string>
+    <string name="CreateButton">Crear</string>
 
 </resources>

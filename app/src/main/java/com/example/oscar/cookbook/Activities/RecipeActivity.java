@@ -67,49 +67,14 @@ public class RecipeActivity extends AppCompatActivity
         // Get recipes
         List<Recipe> recipes = RecipeBook.getRecipes(ingredients);
 
-
-        // Feed the ListView
-        // String 'Title' adapter
-        String[] title = new String[recipes.size()];
-        String[] ingredients2 = new String[recipes.size()];
-        for(int i = 0; i < recipes.size(); i++) {title[i] = recipes.get(i).getTitle();}
-        for(int i = 0; i < recipes.size(); i++) {
-            ingredients2[i] = Arrays.toString(recipes.get(i).getIngredients());
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_2, android.R.id.text1, title);
-
-
-        list.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-        // ListView Item Click Listener
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id)
-            {
-                // ListView Clicked item value
-                String title = (String) list.getItemAtPosition(position);
-
-                // Show Alert
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RecipeBook.getRecipeFromTitle(title).getUrl()));
-                startActivity(browserIntent);
-            }
-        });
-
-
-        // AMPLIATION:
-        /*
-
+        //      Feed the ListView:
         // Create the adapter
-        //RecipeAdapter adapterRecipes = new RecipeAdapter(this, recipes.toArray(new Recipe[recipes.size()]));
+        RecipeAdapter adapterRecipes = new RecipeAdapter(this, recipes.toArray(new Recipe[recipes.size()]));
 
         // Set the adapter
-        //list.setAdapter(adapterRecipes);
+        list.setAdapter(adapterRecipes);
 
+        // ListView Item Click Listener
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
                     {
                         @Override
@@ -124,9 +89,7 @@ public class RecipeActivity extends AppCompatActivity
                             startActivity(browserIntent);
                         }
                     });
-         */
     }
-
 
     public void onSaveInstanceState(Bundle outState)
     {

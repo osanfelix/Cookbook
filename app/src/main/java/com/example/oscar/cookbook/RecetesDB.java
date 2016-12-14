@@ -68,7 +68,7 @@ public class RecetesDB
             String title    = _sp.getString(dbKey + dbSeparator + i, null);
             String url      = _sp.getString(dbKey + dbSeparator + i + dbSeparator + dburl, null);
 
-            int totalIngredients = _sp.getInt(dbKey + dbSeparator + i ,0);
+            int totalIngredients = _sp.getInt(dbKey + dbSeparator + i + dbSeparator + dbNumber ,0);
             // Foreach ingredient
             for(int j = 0; j < totalIngredients; j++)
             {
@@ -88,21 +88,26 @@ public class RecetesDB
     }
 
     // Public methods
-    public boolean saveRecipe(Recipe recipe)
+    public void saveRecipe(Recipe recipe)
     {
-        // TODO
-        return false;
-    }
+        int number = _recipes.size();
+        SharedPreferences.Editor editor = _sp.edit();
+        // Title
+        editor.putString(dbKey + dbSeparator + number,recipe.getTitle());
+        // URL
+        editor.putString(dbKey + dbSeparator + number + dbSeparator + dburl,recipe.getUrl());
+        // Number ingredients
+        editor.putInt(dbKey + dbSeparator + number + dbSeparator+ dbNumber,recipe.getIngredients().length);
+        for(int i= 0; i < recipe.getIngredients().length; i++)
+        {
+            editor.putString(dbKey + dbSeparator + number + dbSeparator + dbsubKey + dbSeparator  + i,recipe.getIngredients()[i]);
+        }
+        //Last: Increase recipes number
+        editor.putInt(dbNumber,_recipes.size() + 1);
 
-    public List<String> getRecipeTitles()
-    {
-        // TODO
-        return null;
-    }
+        //editor.commit();
+        editor.commit();
 
-    public Recipe getRecipe(String title)
-    {
-        // TODO
-        return null;
+        _recipes.add(recipe);
     }
 }

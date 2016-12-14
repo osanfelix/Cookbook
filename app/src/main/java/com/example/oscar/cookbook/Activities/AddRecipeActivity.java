@@ -6,8 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.oscar.cookbook.R;
+import com.example.oscar.cookbook.RecetesDB;
+import com.example.oscar.cookbook.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +31,8 @@ public class AddRecipeActivity extends AppCompatActivity
     CheckBox pasteCheckbox;
     CheckBox breadCheckbox;
 
+    EditText titleEditText;
+    EditText urlEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +51,9 @@ public class AddRecipeActivity extends AppCompatActivity
         tuneCheckbox = (CheckBox)findViewById(R.id.Tune);
         pasteCheckbox = (CheckBox)findViewById(R.id.Paste);
         breadCheckbox = (CheckBox)findViewById(R.id.Bread);
+
+        titleEditText = (EditText) findViewById(R.id.textTitle);
+        urlEditText = (EditText) findViewById(R.id.textURL);
     }
 
     public void onClick(View view) {
@@ -70,8 +80,23 @@ public class AddRecipeActivity extends AppCompatActivity
         if (breadCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Bread));
 
+        // Check all fields implemented
+        if(titleEditText.getText().toString().length() == 0 || urlEditText.getText().toString().length() == 0 || ingredients.size() == 0)
+        {
+            Toast toast = Toast.makeText(this, getResources().getString(R.string.CreateError), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else {
 
-        // Save the recipe inte Shared Preferences
-        // TODO
+            // Save the recipe inte Shared Preferences
+            Recipe newRecipe = new Recipe(titleEditText.getText().toString(), urlEditText.getText().toString(), ingredients.toArray(new String[ingredients.size()]));
+            RecetesDB.getInstance().saveRecipe(newRecipe);
+
+
+            Toast toast = Toast.makeText(this, getResources().getString(R.string.CreateNotification), Toast.LENGTH_SHORT);
+            toast.show();
+
+            finish();
+        }
     }
 }

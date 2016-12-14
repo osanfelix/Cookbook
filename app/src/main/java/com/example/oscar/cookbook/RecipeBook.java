@@ -1,5 +1,6 @@
 package com.example.oscar.cookbook;
 
+import android.app.Activity;
 import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,14 @@ public class RecipeBook
 {
     static List<Recipe> _recipes = new ArrayList<>();
 
-    public static void loadRecipes()
+    public static void loadRecipes(Activity act)
     {
+        RecetesDB.getInstance().setPrefences(act.getPreferences(0));
+        RecetesDB.getInstance().loadRecipes();
 
+        _recipes = RecetesDB.getInstance().getRecipes();
+
+        /*
         _recipes.add(new Recipe("Arroz con leche",
                 "http://www.recetaarrozconleche.com/",
                 new String[]{"Arroz", "Leche"}));
@@ -22,6 +28,7 @@ public class RecipeBook
         _recipes.add(new Recipe("Pasta, tomate y atun",
                 "http://www.directoalpaladar.com/recetas-de-pasta/pasta-con-atun-y-tomate",
                 new String[]{"Tomate", "Pasta", "Atun"}));
+        */
     }
 
     public static List<Recipe> getRecipes(String[] ingredients)

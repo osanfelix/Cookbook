@@ -14,5 +14,6 @@
 
     <string name="FindButton">Buscar</string>
     <string name="CreateButton">Crear</string>
-
+    <string name="CreateNotification">Receta añadida</string>
+    <string name="CreateError">Rellena todos los campos</string>
 </resources>

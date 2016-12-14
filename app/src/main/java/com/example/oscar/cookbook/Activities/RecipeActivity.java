@@ -46,8 +46,6 @@ public class RecipeActivity extends AppCompatActivity
     protected void onStart()
     {
         super.onStart();
-        //loadRecipes
-        RecipeBook.loadRecipes();
 
         list.setAdapter(null);
         list.invalidateViews();

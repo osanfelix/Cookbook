@@ -1,12 +1,16 @@
 package com.example.oscar.cookbook.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 
 import com.example.oscar.cookbook.R;
+import com.example.oscar.cookbook.RecetesDB;
+import com.example.oscar.cookbook.RecipeBook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +46,9 @@ public class CookbookActivity extends AppCompatActivity
         tuneCheckbox = (CheckBox)findViewById(R.id.Tune);
         pasteCheckbox = (CheckBox)findViewById(R.id.Paste);
         breadCheckbox = (CheckBox)findViewById(R.id.Bread);
+
+        // Load database
+        RecipeBook.loadRecipes(this);
     }
 
     public void onClickCreate(View view)
@@ -76,7 +83,6 @@ public class CookbookActivity extends AppCompatActivity
             ingredients.add(getResources().getString(R.string.Paste));
         if(breadCheckbox.isChecked())
             ingredients.add(getResources().getString(R.string.Bread));
-
 
         // Create the Intent passing arguments
         Intent intent = new Intent(this, RecipeActivity.class);
